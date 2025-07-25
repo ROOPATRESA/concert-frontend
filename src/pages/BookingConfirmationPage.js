@@ -6,7 +6,11 @@ const BookingConfirmationPage = () => {
   const location = useLocation();
 
   if (!location.state) {
-    return <p className="text-danger text-center mt-5">No booking data found. Please book a ticket first.</p>;
+    return (
+      <p className="text-danger text-center mt-5">
+        No booking data found. Please book a ticket first.
+      </p>
+    );
   }
 
   const {
@@ -47,15 +51,27 @@ const BookingConfirmationPage = () => {
       >
         <h1 className="mb-4 text-warning"> Booking Confirmed!</h1>
 
-        <p><strong>Concert:</strong> {concertName || "N/A"}</p>
-        <p><strong>Date & Time:</strong> {formattedDateTime || "N/A"}</p>
-        <p><strong>Venue:</strong> {venue || "N/A"}</p>
-        <p><strong>Booked By:</strong> {bookedBy || "N/A"}</p>
-        <p><strong>Tickets Booked:</strong> {ticketsBooked || "N/A"}</p>
+        <p>
+          <strong>Concert:</strong> {concertName || "N/A"}
+        </p>
+        <p>
+          <strong>Date & Time:</strong> {formattedDateTime || "N/A"}
+        </p>
+        <p>
+          <strong>Venue:</strong> {venue || "N/A"}
+        </p>
+        <p>
+          <strong>Booked By:</strong> {bookedBy || "N/A"}
+        </p>
+        <p>
+          <strong>Tickets Booked:</strong> {ticketsBooked || "N/A"}
+        </p>
 
         {qrCodeUrl && (
           <div className="my-4">
-            <p><strong>Scan your QR Ticket:</strong></p>
+            <p>
+              <strong>Scan your QR Ticket:</strong>
+            </p>
             <img
               src={qrCodeUrl}
               alt="QR Code"
@@ -69,7 +85,9 @@ const BookingConfirmationPage = () => {
         {bookingId ? (
           <DownloadTicketButton bookingId={bookingId} />
         ) : (
-          <p className="text-danger">Booking ID not found. Cannot download ticket.</p>
+          <p className="text-danger">
+            Booking ID not found. Cannot download ticket.
+          </p>
         )}
       </div>
     </div>

@@ -1,6 +1,6 @@
-import React  from "react";
+import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -119,16 +119,15 @@ function Navbar() {
                 </li>
               )}
               <li className="nav-item">
-  <NavLink
-    to="/my-bookings"
-    className={({ isActive }) =>
-      isActive ? activeClass : inactiveClass
-    }
-  >
-    My Bookings
-  </NavLink>
-</li>
-
+                <NavLink
+                  to="/my-bookings"
+                  className={({ isActive }) =>
+                    isActive ? activeClass : inactiveClass
+                  }
+                >
+                  My Bookings
+                </NavLink>
+              </li>
 
               <li className="nav-item">
                 <button

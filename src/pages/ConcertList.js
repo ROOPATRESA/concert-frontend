@@ -10,7 +10,9 @@ const ConcertList = () => {
   useEffect(() => {
     const fetchConcerts = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/retrieve_concert_api");
+        const res = await axios.get(
+          "http://localhost:3000/api/retrieve_concert_api"
+        );
         setConcerts(res.data.data);
         setLoading(false);
       } catch (err) {

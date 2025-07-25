@@ -35,8 +35,12 @@ function RegisterPage() {
     }
 
     try {
-     
-      await axios.post("http://localhost:3000/api/signup_api", { name, email, password, confirmPassword });
+      await axios.post("http://localhost:3000/api/signup_api", {
+        name,
+        email,
+        password,
+        confirmPassword,
+      });
       console.log({ name, email, password, confirmPassword });
       setMessage("✅ Registration successful! Redirecting to login...");
       setMessageType("success");
@@ -76,59 +80,79 @@ function RegisterPage() {
         }}
       />
 
-     <div
-  className="card p-5 shadow-lg"
-  style={{
-    maxWidth: "420px",
-    width: "100%",
-    borderRadius: "20px",
-    backgroundColor: "rgba(0, 0, 0, 0.6)",  // black transparent
-    backdropFilter: "blur(5px)",             // optional blur effect
-    zIndex: 1,
-    position: "relative",
-    boxShadow: "0 8px 30px rgba(255, 223, 0, 0.4)",
-  }}
+      <div
+        className="card p-5 shadow-lg"
+        style={{
+          maxWidth: "420px",
+          width: "100%",
+          borderRadius: "20px",
+          backgroundColor: "rgba(0, 0, 0, 0.6)", // black transparent
+          backdropFilter: "blur(5px)", // optional blur effect
+          zIndex: 1,
+          position: "relative",
+          boxShadow: "0 8px 30px rgba(255, 223, 0, 0.4)",
+        }}
       >
-        <h3 className="text-center mb-4 text-warning fw-bold" style={{ letterSpacing: "1.5px" }}>
+        <h3
+          className="text-center mb-4 text-warning fw-bold"
+          style={{ letterSpacing: "1.5px" }}
+        >
           Register
         </h3>
 
         {message && (
-          <div className={`alert alert-${messageType} text-center`} role="alert" style={{ fontWeight: "600" }}>
+          <div
+            className={`alert alert-${messageType} text-center`}
+            role="alert"
+            style={{ fontWeight: "600" }}
+          >
             {message}
           </div>
         )}
 
         <form onSubmit={handleRegister} noValidate>
-          {["name", "email", "password", "confirmPassword"].map((field, idx) => (
-            <div className="mb-4" key={field}>
-              <input
-                type={field.includes("password") ? "password" : field === "email" ? "email" : "text"}
-                name={field}
-                className="form-control form-control-lg"
-                placeholder={
-                  field === "name"
-                    ? "Full Name"
-                    : field === "email"
-                    ? "Email Address"
-                    : field === "password"
-                    ? "Create Password"
-                    : "Confirm Password"
-                }
-                value={form[field]}
-                onChange={handleChange}
-                required
-                style={{
-                  borderRadius: "12px",
-                  boxShadow: "inset 2px 2px 8px rgba(255, 223, 0, 0.2)",
-                  border: "2px solid #ffd700",
-                  transition: "all 0.3s ease",
-                }}
-                onFocus={(e) => (e.target.style.boxShadow = "0 0 12px 2px #ffd700")}
-                onBlur={(e) => (e.target.style.boxShadow = "inset 2px 2px 8px rgba(255, 223, 0, 0.2)")}
-              />
-            </div>
-          ))}
+          {["name", "email", "password", "confirmPassword"].map(
+            (field, idx) => (
+              <div className="mb-4" key={field}>
+                <input
+                  type={
+                    field.includes("password")
+                      ? "password"
+                      : field === "email"
+                      ? "email"
+                      : "text"
+                  }
+                  name={field}
+                  className="form-control form-control-lg"
+                  placeholder={
+                    field === "name"
+                      ? "Full Name"
+                      : field === "email"
+                      ? "Email Address"
+                      : field === "password"
+                      ? "Create Password"
+                      : "Confirm Password"
+                  }
+                  value={form[field]}
+                  onChange={handleChange}
+                  required
+                  style={{
+                    borderRadius: "12px",
+                    boxShadow: "inset 2px 2px 8px rgba(255, 223, 0, 0.2)",
+                    border: "2px solid #ffd700",
+                    transition: "all 0.3s ease",
+                  }}
+                  onFocus={(e) =>
+                    (e.target.style.boxShadow = "0 0 12px 2px #ffd700")
+                  }
+                  onBlur={(e) =>
+                    (e.target.style.boxShadow =
+                      "inset 2px 2px 8px rgba(255, 223, 0, 0.2)")
+                  }
+                />
+              </div>
+            )
+          )}
 
           <button
             type="submit"

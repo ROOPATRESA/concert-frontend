@@ -5,9 +5,15 @@ const BookingSuccess = ({ message, booking, qrCode, pdfUrl }) => {
   return (
     <div className="container mt-5 text-center">
       <h2 className="text-success">{message}</h2>
-      <p><strong>Concert ID:</strong> {booking.concertId}</p>
-      <p><strong>Tickets Booked:</strong> {booking.ticketsBooked}</p>
-      <p><strong>Booked By:</strong> {booking.username}</p>
+      <p>
+        <strong>Concert ID:</strong> {booking.concertId}
+      </p>
+      <p>
+        <strong>Tickets Booked:</strong> {booking.ticketsBooked}
+      </p>
+      <p>
+        <strong>Booked By:</strong> {booking.username}
+      </p>
 
       <div className="my-4">
         <h5>Your Ticket QR Code:</h5>

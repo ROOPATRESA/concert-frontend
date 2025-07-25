@@ -64,7 +64,7 @@ const ConcertBookingPage = () => {
 
       alert("Booking successful!");
 
-      setConcert(prev => ({
+      setConcert((prev) => ({
         ...prev,
         availableTickets: prev.availableTickets - tickets,
       }));
@@ -83,14 +83,18 @@ const ConcertBookingPage = () => {
           pdfUrl,
         },
       });
-
     } catch (err) {
       console.error("Booking error:", err.response || err.message);
       alert("Booking failed: " + (err.response?.data?.message || err.message));
     }
   };
 
-  if (loading) return <div className="text-center mt-4 fs-4 text-warning">Loading concert details...</div>;
+  if (loading)
+    return (
+      <div className="text-center mt-4 fs-4 text-warning">
+        Loading concert details...
+      </div>
+    );
   if (error) return <div className="alert alert-danger mt-4">{error}</div>;
 
   return (
@@ -107,29 +111,41 @@ const ConcertBookingPage = () => {
         padding: "50px 20px",
       }}
     >
-     <div
-  className="card shadow-lg p-4 text-white"
-  style={{
-    maxWidth: "600px",
-    width: "100%",
-    backgroundColor: "rgba(0, 0, 0, 0.7)", // 🔥 transparent black
-    borderRadius: "20px",
-    boxShadow: "0 0 25px 5px rgba(255, 255, 0, 0.7)", // yellow glow
-    backdropFilter: "blur(3px)", // optional smooth glass effect
-  }}
->
-
-      
+      <div
+        className="card shadow-lg p-4 text-white"
+        style={{
+          maxWidth: "600px",
+          width: "100%",
+          backgroundColor: "rgba(0, 0, 0, 0.7)", // 🔥 transparent black
+          borderRadius: "20px",
+          boxShadow: "0 0 25px 5px rgba(255, 255, 0, 0.7)", // yellow glow
+          backdropFilter: "blur(3px)", // optional smooth glass effect
+        }}
+      >
         <h4 className="text-success mb-3">🎉 Welcome, {userName}</h4>
-        <h2 className="mb-3">Book Tickets for <span className="text-primary">{concert?.concertName}</span></h2>
+        <h2 className="mb-3">
+          Book Tickets for{" "}
+          <span className="text-primary">{concert?.concertName}</span>
+        </h2>
 
-        <p><strong>Date & Time:</strong> {new Date(concert.dateTime).toLocaleString()}</p>
-        <p><strong>Venue:</strong> {concert.venue}</p>
-        <p><strong>Price per Ticket:</strong> ₹{concert.ticketPrice}</p>
-        <p><strong>Available Tickets:</strong> {concert.availableTickets}</p>
+        <p>
+          <strong>Date & Time:</strong>{" "}
+          {new Date(concert.dateTime).toLocaleString()}
+        </p>
+        <p>
+          <strong>Venue:</strong> {concert.venue}
+        </p>
+        <p>
+          <strong>Price per Ticket:</strong> ₹{concert.ticketPrice}
+        </p>
+        <p>
+          <strong>Available Tickets:</strong> {concert.availableTickets}
+        </p>
 
         <div className="mb-3">
-          <label htmlFor="tickets" className="form-label fw-semibold">Select number of tickets (max 3)</label>
+          <label htmlFor="tickets" className="form-label fw-semibold">
+            Select number of tickets (max 3)
+          </label>
           <input
             type="number"
             id="tickets"
@@ -139,7 +155,11 @@ const ConcertBookingPage = () => {
             value={tickets}
             onChange={(e) => {
               const value = parseInt(e.target.value);
-              if (value >= 1 && value <= 3 && value <= concert.availableTickets) {
+              if (
+                value >= 1 &&
+                value <= 3 &&
+                value <= concert.availableTickets
+              ) {
                 setTickets(value);
               }
             }}

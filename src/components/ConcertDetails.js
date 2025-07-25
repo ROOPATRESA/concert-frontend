@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 function ConcertDetails() {
   const { concertId } = useParams();
@@ -12,7 +12,7 @@ function ConcertDetails() {
         const response = await axios.get(`/api/concert/${concertId}`);
         setConcert(response.data);
       } catch (error) {
-        console.error('Error fetching concert:', error);
+        console.error("Error fetching concert:", error);
       }
     };
 

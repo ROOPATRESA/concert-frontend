@@ -12,7 +12,7 @@ import ConcertBookingPage from "./pages/ConcertBookingPage";
 import ConcertDetails from "./components/ConcertDetails";
 import ConcertList from "./pages/ConcertList";
 import BookingConfirmationPage from "./pages/BookingConfirmationPage";
-import MyBookings from "./pages/MyBookings"; 
+import MyBookings from "./pages/MyBookings";
 
 function App() {
   return (
@@ -23,17 +23,20 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         {/* <Route path="/admin" element={<AdminDashboard />} /> */}
-         <Route path="/concertpage" element={<ConcertsPage />} />
-         <Route path="/concerts/create" element={<CreateConcert />} />
-         <Route path="/update-concert/:id" element={<UpdateConcert />} />
-         <Route path="/concertbookingpage/:concertId" element={<ConcertBookingPage/>} />
-         <Route path="/concert/:concertId" element={<ConcertDetails />} />
-         <Route path="/concerts" element={<ConcertList />} />
-         <Route path="/booking-confirmation" element={<BookingConfirmationPage />} />
-         <Route path="/my-bookings" element={<MyBookings />} />
-        
-
-
+        <Route path="/concertpage" element={<ConcertsPage />} />
+        <Route path="/concerts/create" element={<CreateConcert />} />
+        <Route path="/update-concert/:id" element={<UpdateConcert />} />
+        <Route
+          path="/concertbookingpage/:concertId"
+          element={<ConcertBookingPage />}
+        />
+        <Route path="/concert/:concertId" element={<ConcertDetails />} />
+        <Route path="/concerts" element={<ConcertList />} />
+        <Route
+          path="/booking-confirmation"
+          element={<BookingConfirmationPage />}
+        />
+        <Route path="/my-bookings" element={<MyBookings />} />
       </Routes>
     </>
   );
