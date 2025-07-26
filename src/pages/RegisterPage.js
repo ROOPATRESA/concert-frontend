@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const API = process.env.REACT_APP_API_URL || "http://localhost:3000/api";
+
+console.log("API URL →", API); // ✅ check if this is undefined
+
 
 function RegisterPage() {
   const navigate = useNavigate();
@@ -35,7 +39,7 @@ function RegisterPage() {
     }
 
     try {
-      await axios.post("http://localhost:3000/api/signup_api", {
+      await axios.post(`${API}/signup_api`, {
         name,
         email,
         password,
@@ -49,6 +53,7 @@ function RegisterPage() {
       setTimeout(() => {
         navigate("/login");
       }, 2000);
+      
     } catch (error) {
       setMessage(error.response?.data?.message || "❌ Registration failed");
       setMessageType("danger");
