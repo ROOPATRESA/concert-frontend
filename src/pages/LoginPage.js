@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-const API = process.env.REACT_APP_API_URL || "http://localhost:3000/api";
-console.log("API URL →", API);
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -20,7 +18,7 @@ function LoginPage() {
     }
 
     try {
-      const response = await axios.post(`${API}/login_api`, {
+      const response = await axios.post("http://localhost:3000/api/login_api", {
         email,
         password,
       });
@@ -81,7 +79,7 @@ function LoginPage() {
           boxShadow: "0 8px 30px rgba(255, 223, 0, 0.4)",
         }}
       >
-        
+        >
         <h3
           className="text-center mb-4 text-warning fw-bold"
           style={{ letterSpacing: "1.5px" }}
